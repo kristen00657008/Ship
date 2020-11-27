@@ -15,12 +15,11 @@ struct VideoView: View {
             "rtmp://140.121.199.178:1935/liveR"
        ]
        @EnvironmentObject var locationData: LocationData
-       @State private var urlString = "rtmp://140.121.199.178:1935/liveR"
+       @State private var urlString = "rtmp://140.121.199.178:1936/boat"
        
        var body: some View {
            VStack {
-            PlayerView(url: urlString)
-                
+                PlayerView(url: urlString)                
            }
        }
 }

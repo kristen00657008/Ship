@@ -21,11 +21,12 @@ class LocationData: ObservableObject{
     @Published var Annotations = [MKPointAnnotation]()
     @Published var centerCoordinate = CLLocationCoordinate2D()
     @Published var satilizeMode = false
-    @Published var canStartNavigation = false
-    
+    @Published var canStartNavigation = false    
     @Published var playVideo = true
     @Published var shipState = "stop"
     @Published var canOpenMap = false
+    @Published var pollutions = [Pollution]()
+    @Published var finish = false
 }
 
 class DestinationAnn: NSObject, MKAnnotation {

@@ -9,6 +9,7 @@
 import SwiftUI
 import MapKit
 import Firebase
+import FirebaseFirestore
 
 struct AutoControl: View {
     
@@ -66,16 +67,17 @@ struct AutoControl: View {
                     }
                 }
             }
+            .navigationBarItems(leading:Toggle("衛星模式", isOn: self.$locationData.satilizeMode)
+                                ,trailing: Button(action: {
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }) {
+                                    Image("close")
+                                        .renderingMode(.original)
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                })
         }
-        .navigationBarItems(leading:Toggle("衛星模式", isOn: self.$locationData.satilizeMode)
-                            ,trailing: Button(action: {
-                                self.presentationMode.wrappedValue.dismiss()
-                            }) {
-                                Image("close")
-                                    .renderingMode(.original)
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                            })
+        
     }
 }
 

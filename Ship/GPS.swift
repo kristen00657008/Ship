@@ -9,6 +9,8 @@
 import SwiftUI
 import MapKit
 import Firebase
+import FirebaseFirestore
+
 struct GPS: View {
     
     @State var showMap = false

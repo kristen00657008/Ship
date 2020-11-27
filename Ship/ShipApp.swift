@@ -22,9 +22,12 @@ struct ShipApp: App {
                  .tabItem {
                  Text("導航")}
                  
-                 /*VideoView()
+                 VideoView()
                  .tabItem {
-                 Text("即時影像")}*/
+                 Text("即時影像")}
+                PollutionList()
+                    .tabItem {
+                    Text("污染點列表")}
             }.environmentObject(locationData)
         }
     }

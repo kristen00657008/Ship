@@ -72,6 +72,7 @@ struct navigateView: View {
                             self.presentationMode.wrappedValue.dismiss()
                             self.locationData.canStartNavigation = false
                             self.locationData.DestinationLocation = ""
+                            self.locationData.finish = true
                         }))
                     }
                     Spacer()

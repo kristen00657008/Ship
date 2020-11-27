@@ -11,6 +11,7 @@ import SwiftUI
 import MapKit
 import Firebase
 import UIKit
+import FirebaseFirestore
 
 
 struct MapView: UIViewRepresentable {
