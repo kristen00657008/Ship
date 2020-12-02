@@ -21,6 +21,8 @@
 		43000D60256D3D7A002423DE /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43000D5F256D3D7A002423DE /* VideoView.swift */; };
 		43000D63256D3DA0002423DE /* ManualControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43000D62256D3DA0002423DE /* ManualControl.swift */; };
 		43000D66256D46BA002423DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43000D65256D46BA002423DE /* GoogleService-Info.plist */; };
+		43C8561625772B2D001958AD /* testView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C8561525772B2D001958AD /* testView.swift */; };
+		43C85619257730A0001958AD /* NewMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C85618257730A0001958AD /* NewMapView.swift */; };
 		4BDBDB2C257102EF00CB62B3 /* PollutionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBDB2B257102EF00CB62B3 /* PollutionList.swift */; };
 		4BDBDB2F2571098800CB62B3 /* PollutionMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBDB2E2571098700CB62B3 /* PollutionMap.swift */; };
 		4BDBDB32257117AB00CB62B3 /* PollutionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBDB31257117AB00CB62B3 /* PollutionRow.swift */; };
@@ -42,6 +44,8 @@
 		43000D5F256D3D7A002423DE /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		43000D62256D3DA0002423DE /* ManualControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualControl.swift; sourceTree = "<group>"; };
 		43000D65256D46BA002423DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		43C8561525772B2D001958AD /* testView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testView.swift; sourceTree = "<group>"; };
+		43C85618257730A0001958AD /* NewMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMapView.swift; sourceTree = "<group>"; };
 		4BDBDB2B257102EF00CB62B3 /* PollutionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionList.swift; sourceTree = "<group>"; };
 		4BDBDB2E2571098700CB62B3 /* PollutionMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionMap.swift; sourceTree = "<group>"; };
 		4BDBDB31257117AB00CB62B3 /* PollutionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionRow.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				4BDBDB2B257102EF00CB62B3 /* PollutionList.swift */,
 				4BDBDB2E2571098700CB62B3 /* PollutionMap.swift */,
 				4BDBDB31257117AB00CB62B3 /* PollutionRow.swift */,
+				43C8561525772B2D001958AD /* testView.swift */,
+				43C85618257730A0001958AD /* NewMapView.swift */,
 			);
 			path = Ship;
 			sourceTree = "<group>";
@@ -251,11 +257,13 @@
 				4BDBDB2F2571098800CB62B3 /* PollutionMap.swift in Sources */,
 				43000D54256D3CF1002423DE /* GPS.swift in Sources */,
 				43000D0E256D3ACF002423DE /* ShipApp.swift in Sources */,
+				43C8561625772B2D001958AD /* testView.swift in Sources */,
 				43000D60256D3D7A002423DE /* VideoView.swift in Sources */,
 				4BDBDB2C257102EF00CB62B3 /* PollutionList.swift in Sources */,
 				43000D4E256D3CB2002423DE /* AutoControl.swift in Sources */,
 				4BDBDB32257117AB00CB62B3 /* PollutionRow.swift in Sources */,
 				43000D5A256D3D24002423DE /* NavigateView.swift in Sources */,
+				43C85619257730A0001958AD /* NewMapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

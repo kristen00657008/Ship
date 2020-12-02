@@ -11,23 +11,13 @@ struct PollutionMap: View {
     )
     
     var body: some View {
-        NavigationView{
-            ZStack{
-                Map(coordinateRegion: $region, annotationItems: locationData.pollutions) { pollutions in
-                    MapPin(coordinate: pollutions.coordinate, tint: .green)
-                }
-                
-                .edgesIgnoringSafeArea(.all)
-                .navigationBarItems(leading:Toggle("衛星模式", isOn: self.$locationData.satilizeMode)
-                                    ,trailing: Button(action: {
-                                        self.presentationMode.wrappedValue.dismiss()
-                                    }) {
-                                        Image("close")
-                                            .renderingMode(.original)
-                                            .resizable()
-                                            .frame(width: 30, height: 30)
-                                    })
+        ZStack{
+            Map(coordinateRegion: $region, annotationItems: locationData.pollutions) { pollutions in
+                MapPin(coordinate: pollutions.coordinate, tint: .green)
             }
+            .edgesIgnoringSafeArea(.all)
+            
         }
+        
     }
 }

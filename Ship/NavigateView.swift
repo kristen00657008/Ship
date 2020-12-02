@@ -30,13 +30,10 @@ struct navigateView: View {
                 print("Document does not exist")
             }
         }
-        let CurrentAnnotation = CurrentAnn(coordinate: CLLocationCoordinate2D(latitude: Double((self.locationData.CurrentLatitude as NSString).doubleValue), longitude: Double((self.locationData.CurrentLongitude as NSString).doubleValue)))
-        
-        CurrentAnnotation.title = "船目前位置"
-        
+        let CurrentAnnotation = MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: Double((self.locationData.CurrentLatitude as NSString).doubleValue), longitude: Double((self.locationData.CurrentLongitude as NSString).doubleValue)),title:"船目前位置")
         
         self.locationData.CurrentAnnotation = CurrentAnnotation
-        
+        self.locationData.annotationItems[0] = self.locationData.CurrentAnnotation
     }
     
     func multiThread() {
@@ -48,10 +45,35 @@ struct navigateView: View {
         }
     }
     
+    private func setRegion(){
+        self.locationData.region = MKCoordinateRegion(center: CLLocationCoordinate2D(
+                                                        latitude: Double((self.locationData.CurrentLatitude as NSString).doubleValue), longitude: Double((self.locationData.CurrentLongitude as NSString).doubleValue)),
+                                                      latitudinalMeters: 1000, longitudinalMeters: 1000 )
+    }
+    
     var body: some View {
         ZStack{
-            MapView()
-                .edgesIgnoringSafeArea(.all)
+            Map(coordinateRegion: self.$locationData.region, annotationItems: self.locationData.annotationItems) { annotationItem in
+                MapAnnotation(coordinate: annotationItem.coordinate) {
+                    VStack {
+                        Group {
+                            Image(systemName: "mappin.circle.fill")
+                                .resizable()
+                                .frame(width: 30.0, height: 30.0)
+                            Circle()
+                                .frame(width: 8.0, height: 8.0)
+                        }
+                        .foregroundColor(.red)
+                        Text(annotationItem.title!)
+                    }
+                }
+            }
+            .edgesIgnoringSafeArea(.all)
+            .onAppear {
+                self.setRegion()
+                print(self.locationData.annotationItems)
+            }
+            
             VStack{
                 Spacer()
                 HStack(){

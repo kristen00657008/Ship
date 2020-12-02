@@ -8,9 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var locationData = LocationData()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabView {
+            /*ManualControl()
+             .tabItem {
+             Text("手動控制")}*/
+            
+            GPS(locationData: locationData)
+                .tabItem {Text("導航")}
+            /*testView()
+                .tabItem {Text("test")}*/
+            VideoView()
+                .tabItem {Text("即時影像")}
+            
+            PollutionList()
+                .tabItem {Text("污染點列表")}
+        }.environmentObject(locationData)
     }
 }
 

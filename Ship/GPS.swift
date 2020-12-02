@@ -21,6 +21,7 @@ struct GPS: View {
     @State private var first: Bool = true
     func initFirebase(){
         FirebaseApp.configure()
+        return
     }
     func readData(){
         let db = Firestore.firestore()
@@ -36,12 +37,12 @@ struct GPS: View {
                 print("Document does not exist")
             }
             
-            let CurrentAnnotation = CurrentAnn(coordinate: CLLocationCoordinate2D(latitude: Double((self.locationData.CurrentLatitude as NSString).doubleValue), longitude: Double((self.locationData.CurrentLongitude as NSString).doubleValue)))
-            
-            CurrentAnnotation.title = "船目前位置"
-            
-            self.locationData.CurrentAnnotation = CurrentAnnotation
+            self.locationData.CurrentAnnotation = MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: Double((self.locationData.CurrentLatitude as NSString).doubleValue), longitude: Double((self.locationData.CurrentLongitude as NSString).doubleValue)),title:"船目前位置")
+                        
+            self.locationData.annotationItems.append(self.locationData.CurrentAnnotation)
         }
+        print("777")
+        return
     }
     
     func startNavigation() {
@@ -67,7 +68,8 @@ struct GPS: View {
                                     first = false
                                 }
                                 self.readData()
-                                locationData.canOpenMap = true
+                                locationData.canOpenMap = true                                
+                                print("end")
                             }) {
                                 Image("refresh")
                                     .renderingMode(.original)
@@ -87,14 +89,17 @@ struct GPS: View {
                 }.frame(width: 350)
                 HStack(alignment: .center){
                     Text("選擇目的地: ")
+                    NavigationLink("", destination: NewMapView(), isActive: self.$showMap)
                     Button(action: {
+                        print("123")
                         if(!self.locationData.canOpenMap){
+                            print("4146")
                             self.showMapAlert = true
                         }
                         else{
+                            print("561")
                             self.showMap = true
-                        }
-                        
+                        }                        
                     }) {
                         Image("map")
                             .renderingMode(.original)
@@ -104,9 +109,9 @@ struct GPS: View {
                     .alert(isPresented:self.$showMapAlert) {
                         Alert(title: Text("請先重新整理你的位置"), dismissButton: .default(Text("OK")))
                     }
-                    .sheet(isPresented: $showMap){
-                        AutoControl().environmentObject(self.locationData)
-                    }
+                    
+                    
+                    
                     NavigationLink(destination: navigateView(), isActive: self.$showNavigate){
                         Button(action: {
                             if(!self.locationData.canStartNavigation){
@@ -128,8 +133,13 @@ struct GPS: View {
                     
                 }
                 Spacer()
+                
             }
-        }
+        }/*.sheet(isPresented: $showMap){
+         NewMapView()
+         //testView()
+         //AutoControl()//.environmentObject(self.locationData)
+         }*/
         
     }
 }

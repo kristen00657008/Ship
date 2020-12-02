@@ -16,8 +16,8 @@ class LocationData: ObservableObject{
     @Published var CurrentLatitude = ""
     @Published var CurrentLongitude = ""
     @Published var CurrentLocation = ""
-    @Published var DestinationAnnotation = DestinationAnn(coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0))
-    @Published var CurrentAnnotation = CurrentAnn(coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0))
+    @Published var DestinationAnnotation = MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), title: "")
+    @Published var CurrentAnnotation = MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), title: "")
     @Published var Annotations = [MKPointAnnotation]()
     @Published var centerCoordinate = CLLocationCoordinate2D()
     @Published var satilizeMode = false
@@ -27,9 +27,12 @@ class LocationData: ObservableObject{
     @Published var canOpenMap = false
     @Published var pollutions = [Pollution]()
     @Published var finish = false
+    @Published var firstAdd = true
+    @Published var region = MKCoordinateRegion()
+    @Published var annotationItems = [MyAnnotationItem]()
 }
 
-class DestinationAnn: NSObject, MKAnnotation {
+/*class DestinationAnn: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String?
     
@@ -45,4 +48,10 @@ class CurrentAnn: NSObject, MKAnnotation {
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
     }
+}*/
+
+struct MyAnnotationItem: Identifiable {
+    var coordinate: CLLocationCoordinate2D
+    let id = UUID()
+    let title: String?
 }

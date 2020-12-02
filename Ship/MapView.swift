@@ -6,7 +6,7 @@
 //  Copyright © 2020 User24. All rights reserved.
 //
 
-import Foundation
+/*import Foundation
 import SwiftUI
 import MapKit
 import Firebase
@@ -16,7 +16,6 @@ import FirebaseFirestore
 
 struct MapView: UIViewRepresentable {
     @EnvironmentObject var locationData: LocationData
-    var timer = Timer()
     
     func readData(){
         let db = Firestore.firestore()
@@ -31,16 +30,14 @@ struct MapView: UIViewRepresentable {
                 print("Document does not exist")
             }
             
-            let CurrentAnnotation = CurrentAnn(coordinate: CLLocationCoordinate2D(latitude: Double((self.locationData.CurrentLatitude as NSString).doubleValue), longitude: Double((self.locationData.CurrentLongitude as NSString).doubleValue)))
+            let CurrentAnnotation = MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: Double((self.locationData.CurrentLatitude as NSString).doubleValue), longitude: Double((self.locationData.CurrentLongitude as NSString).doubleValue)),title:"船目前位置")
             
-            CurrentAnnotation.title = "船目前位置"
+            self.locationData.CurrentAnnotation = CurrentAnnotation
             
             self.locationData.CurrentAnnotation = CurrentAnnotation
         }
         
     }
-    
-    
     
     func makeUIView(context: UIViewRepresentableContext<MapView>) -> MKMapView {
         let mapView = MKMapView()
@@ -49,23 +46,20 @@ struct MapView: UIViewRepresentable {
         mapView.delegate = context.coordinator
         self.readData()
         
-        mapView.removeAnnotations(mapView.annotations)
+        //mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(self.locationData.CurrentAnnotation)
-        mapView.addAnnotation(self.locationData.DestinationAnnotation)
+        //mapView.addAnnotation(self.locationData.DestinationAnnotation)
         return mapView
     }
     
     func updateUIView(_ uiview: MKMapView, context: UIViewRepresentableContext<MapView>) {
         
-        uiview.removeAnnotations(uiview.annotations)
-        uiview.addAnnotation(self.locationData.CurrentAnnotation)
-        uiview.addAnnotation(self.locationData.DestinationAnnotation)
-        if(self.locationData.satilizeMode){
+       /* if(self.locationData.satilizeMode){
             uiview.mapType = .satellite
         }
         else{
             uiview.mapType = .standard
-        }
+        }*/
         
     }
     
@@ -100,8 +94,9 @@ struct MapView: UIViewRepresentable {
 
 
 
-struct MapView_Previews: PreviewProvider {
+/*struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView()
     }
-}
+}*/
+*/

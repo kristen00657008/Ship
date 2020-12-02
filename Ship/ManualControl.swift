@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import Firebase
+import FirebaseFirestore
 
 
 struct ManualControl: View {
@@ -17,7 +17,7 @@ struct ManualControl: View {
     @State private var angle: Int = 90
     let db: Any
     init(){
-        FirebaseApp.configure()
+        //FirebaseApp.configure()
         db = Firestore.firestore()
     }
     

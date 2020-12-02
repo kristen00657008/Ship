@@ -18,21 +18,21 @@ struct AutoControl: View {
     @EnvironmentObject var locationData: LocationData
     @Environment(\.presentationMode) var presentationMode
     
-    func updateDate() {
+    /*func updateDate() {
         let db = Firestore.firestore()
         db.collection("ship").document("gps").updateData(["DestinationLatitude":  self.locationData.DestinationLatitude ,"DestinationLongitude": self.locationData.DestinationLongitude])
-    }
+    }*/
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
             ZStack {
-                MapView()
+                NewMapView()
                     .edgesIgnoringSafeArea(.all)
-                Circle()
+                /*Circle()
                     .fill(Color.blue)
                     .opacity(0.3)
-                    .frame(width: 32, height: 32)
-                VStack {
+                    .frame(width: 32, height: 32)*/
+                /*VStack {
                     Spacer()
                     HStack{
                         Spacer()
@@ -65,9 +65,9 @@ struct AutoControl: View {
                         }
                         
                     }
-                }
+                }*/
             }
-            .navigationBarItems(leading:Toggle("衛星模式", isOn: self.$locationData.satilizeMode)
+            /*.navigationBarItems(leading:Toggle("衛星模式", isOn: self.$locationData.satilizeMode)
                                 ,trailing: Button(action: {
                                     self.presentationMode.wrappedValue.dismiss()
                                 }) {
@@ -75,8 +75,8 @@ struct AutoControl: View {
                                         .renderingMode(.original)
                                         .resizable()
                                         .frame(width: 30, height: 30)
-                                })
-        }
+                                })*/
+        //}
         
     }
 }
